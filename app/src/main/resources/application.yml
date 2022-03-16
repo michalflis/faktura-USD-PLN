@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: info
+    faktura.USD.PLN: info
+    org.springframework: info
+
+
+spring:
+  profiles:
+    active: dev

@@ -9,6 +9,7 @@ buildscript {
         springDependencyManagementVersion = '1.0.11.RELEASE'
         springFoxStarterVersion = '3.0.0'
         springFoxUiVersion = '3.0.0'
+        jaxbVersion = '2.3.0'
     }
 }
 
@@ -31,13 +32,14 @@ dependencies {
 
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
 
-  //  implementation "org.flywaydb:flyway-core:${flywayVersion}"
+    implementation "org.flywaydb:flyway-core:${flywayVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation "org.springframework.boot:spring-boot-starter-jdbc"
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation "io.springfox:springfox-boot-starter:${springFoxStarterVersion}"
     implementation "io.springfox:springfox-swagger-ui:${springFoxUiVersion}"
+    implementation "javax.xml.bind:jaxb-api:${jaxbVersion}"
 
     runtimeOnly "com.h2database:h2:${h2Version}"
     runtimeOnly "org.postgresql:postgresql:${postgresqlVersion}"
