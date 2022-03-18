@@ -18,6 +18,6 @@ public class XmlService {
         Marshaller marshaller = ctx.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-        marshaller.marshal(invoice, new File(XML_PATH + invoice.getInvoiceId() + ".xml"));
+        marshaller.marshal(invoice, new File(XML_PATH + invoice.getDate() + ".xml"));
     }
 }

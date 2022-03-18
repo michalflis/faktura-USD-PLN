@@ -1,6 +1,5 @@
 package faktura.USD.PLN.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import faktura.USD.PLN.utils.GetCurrencyRate;
 import faktura.USD.PLN.utils.JsonService;
@@ -31,7 +30,6 @@ public class Computer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "ID generowane przez aplikację", required = true, example = "1")
-    @JsonIgnore
     @XmlTransient
     private int computerId;
 
