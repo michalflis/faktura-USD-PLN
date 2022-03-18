@@ -1,10 +1,8 @@
 package faktura.USD.PLN.service;
 
 import faktura.USD.PLN.model.Computer;
-import faktura.USD.PLN.model.Invoice;
 import faktura.USD.PLN.repository.ComputerRepository;
 import faktura.USD.PLN.repository.GenericRepository;
-import faktura.USD.PLN.repository.InvoiceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

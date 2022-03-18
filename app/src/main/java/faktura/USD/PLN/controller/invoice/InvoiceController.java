@@ -6,7 +6,7 @@ import faktura.USD.PLN.utils.XmlService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.xml.bind.JAXBException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
-
-import static faktura.USD.PLN.configuration.Configuration.XML_PATH;
+import java.io.*;
 
 @Slf4j
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @RestController
 public class InvoiceController implements InvoiceControllerApi {
@@ -40,13 +35,13 @@ public class InvoiceController implements InvoiceControllerApi {
     }
 
     @Override
-    public ResponseEntity<Resource> getXmlByDate(@PathVariable String date) throws FileNotFoundException, JAXBException {
-        xmlService.saveToXml(invoiceService.getByDate(date));
-        File file = new File(XML_PATH + date + ".xml");
-        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+    public ResponseEntity<Resource> getXmlByDate(@PathVariable String date) throws IOException, JAXBException {
+
+        ByteArrayResource resource = new ByteArrayResource(xmlService.saveToXml(invoiceService.getByDate(date)));
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + date + ".xml\"")
                 .body(resource);
     }
+
 }

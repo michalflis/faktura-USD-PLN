@@ -9,6 +9,7 @@ import org.springframework.core.io.Resource;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @RequestMapping
 @Api(tags = {"invoice-controller"})
@@ -22,6 +23,6 @@ public interface InvoiceControllerApi {
     @ApiOperation("Get invoice in xml by date")
     @GetMapping(path = "/download/{date}")
     @ResponseBody
-    ResponseEntity<Resource> getXmlByDate(@PathVariable String date) throws FileNotFoundException, JAXBException;
+    ResponseEntity<Resource> getXmlByDate(@PathVariable String date) throws IOException, JAXBException;
 
 }
