@@ -9,28 +9,19 @@ import org.springframework.core.io.Resource;
 
 import javax.xml.bind.JAXBException;
 import java.io.FileNotFoundException;
-import java.util.List;
-import java.util.UUID;
 
-@RequestMapping(path = "/invoices", produces = {"application/json;charset=UTF-8"})
+@RequestMapping
 @Api(tags = {"invoice-controller"})
 public interface InvoiceControllerApi {
 
     @ApiOperation("Add new invoice")
-    @PostMapping
+    @PostMapping(path = "/invoices", produces = {"application/json;charset=UTF-8"})
     ResponseEntity<Invoice> save(@RequestBody Invoice invoice) throws JAXBException;
 
-    @ApiOperation("Get list of all invoices")
-    @GetMapping
-    ResponseEntity<List<Invoice>> getAll();
 
-    @ApiOperation("Get invoice by Id")
-    @GetMapping(path = "/{id}")
-    ResponseEntity<Invoice> getById(@PathVariable UUID id);
-
-    @ApiOperation("Get invoice in xml by Id")
-    @GetMapping(path = "/download/{id}")
+    @ApiOperation("Get invoice in xml by date")
+    @GetMapping(path = "/download/{date}")
     @ResponseBody
-    ResponseEntity<Resource> getXmlById(@PathVariable UUID id) throws FileNotFoundException, JAXBException;
+    ResponseEntity<Resource> getXmlByDate(@PathVariable String date) throws FileNotFoundException, JAXBException;
 
 }

@@ -1,0 +1,70 @@
+<br><br><br><h1>Lista Komputerów</h1>
+
+<br>
+<form #invoiceForm [formGroup]="formGroup">
+  <div class="row">
+    <div class="col fw-bold" style="text-align: left;">
+      Podaj date ksiegowania:
+    </div>
+  </div>
+  <div class="row">
+    <div class="col form-group">
+      <input class="form-control" type="text" id="accountingDate" name="accountingDate"
+             [value]="computer1.accountingDate"
+             [value]="computer2.accountingDate"
+             [value]="computer3.accountingDate"
+             formControlName="accountingDate"
+             aria-describedby="nipHelpBlock">
+    </div>
+    <div class="col form-group">
+      <button class="btn btn-dark" (click)="save()">Dodaj</button>
+    </div>
+    <div id="helpBlock" class="form-text">
+      Data w formacie RRRR-MM-DD
+    </div>
+  </div>
+</form>
+
+<br>
+<section class="container">
+  <form class="form-inline md-form form-sm">
+    <input class="col form-group" type="text" placeholder="Szukaj" aria-label="Szukaj" (input)="applyFilter($event)"
+           matInput>
+  </form>
+  <table mat-table [dataSource]="dataSource" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" matSort>
+
+    <ng-container matColumnDef="computerId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">#</th>
+      <td mat-cell *matCellDef="let row">{{row.computerId}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">Nazwa</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="accountingDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="th-sm">Data księgowania</th>
+      <td mat-cell *matCellDef="let row">{{row.accountingDate}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="costUSD">
+      <th mat-header-cell *matHeaderCellDef class="th-sm">Koszt USD</th>
+      <td mat-cell *matCellDef="let row">{{row.costUSD}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="costPLN">
+      <th mat-header-cell *matHeaderCellDef class="th-sm">Koszt PLN</th>
+      <td mat-cell *matCellDef="let row">{{row.costPLN}}</td>
+    </ng-container>
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef class="th-sm"></th>
+      <td mat-cell *matCellDef="let row"><button class="btn btn-dark" (click)="goToDetails(row.accountingDate)">Otwórz</button></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>
+
