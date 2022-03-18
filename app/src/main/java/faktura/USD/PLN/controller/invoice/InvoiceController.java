@@ -1,6 +1,5 @@
 package faktura.USD.PLN.controller.invoice;
 
-import faktura.USD.PLN.controller.invoice.InvoiceControllerApi;
 import faktura.USD.PLN.model.Invoice;
 import faktura.USD.PLN.service.InvoiceService;
 import faktura.USD.PLN.utils.XmlService;
