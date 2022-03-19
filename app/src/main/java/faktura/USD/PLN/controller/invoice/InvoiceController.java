@@ -19,7 +19,7 @@ import javax.xml.bind.JAXBException;
 import java.io.*;
 
 @Slf4j
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://festive-stonebraker-cdee15.netlify.app")
 @RequiredArgsConstructor
 @RestController
 public class InvoiceController implements InvoiceControllerApi {
